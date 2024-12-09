@@ -21,7 +21,7 @@ Minishell is a simplified version of bash developed as part of the main curricul
 - Handle basic shell built-in commands.
 - Handle environment variable expansion.
 - Support input/output redirection (<, >, <<, >>).
-- Implement basic signal handling (Ctrl-\, Ctrl-C).
+- Implement basic signal handling (Ctrl-\\, Ctrl-C).
 - Implement EOF handling (Ctrl-D).
 - Basic error handling and error messages.
 - Support for handling multiple commands using pipes.
@@ -30,7 +30,7 @@ Minishell is a simplified version of bash developed as part of the main curricul
 
 Requirements:
 
-1. Using an Intel-based MacOS system, can work on other systems using some tweaks.
+1. Currently requires Intel-based MacOS system
 2. Readline installed using brew in ```~/.brew/opt/readline``` directory.
 3. Any C toolchain installed ( clang, gcc, ... ).
 4. GNU Make installed.
