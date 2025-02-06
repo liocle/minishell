@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malaakso <malaakso@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: lionel <lionel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 20:34:16 by malaakso          #+#    #+#             */
-/*   Updated: 2023/08/21 18:14:23 by malaakso         ###   ########.fr       */
+/*   Updated: 2024/10/31 11:51:51 by lionel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+t_minishell    *g_minishell;
 
 void	display_prompt(void)
 {
@@ -29,6 +31,9 @@ void	display_prompt(void)
 int	main(void)
 {
 	size_t	i;
+	g_minishell = ft_calloc(1, sizeof(t_minishell));
+	if (!g_minishell)
+    	exit(1);
 
 	g_minishell = ft_calloc(1, sizeof(t_minishell));
 	if (!g_minishell)

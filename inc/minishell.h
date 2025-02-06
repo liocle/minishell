@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malaakso <malaakso@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: lionel <lionel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 20:34:09 by malaakso          #+#    #+#             */
-/*   Updated: 2023/08/25 10:55:36 by malaakso         ###   ########.fr       */
+/*   Updated: 2024/10/31 11:47:24 by lionel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@
 // For stat
 # include <sys/stat.h>
 
+// For waitpid on Linux
+# include <sys/wait.h>
+
 // User defined headers
 # include "../libft/libft.h"
 # include "ast.h"
@@ -77,7 +80,7 @@ typedef enum e_bool
 	TRUE
 }				t_bool;
 
-t_minishell			*g_minishell;
+extern t_minishell			*g_minishell;
 
 // Necessary function prototype for readline.
 void				rl_replace_line(const char *text, int clear_undo);
