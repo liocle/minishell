@@ -30,7 +30,7 @@ SHELL_C			=	minishell.c \
 INPUT_H			=	input.h
 INPUT_C			=	input.c
 
-LEXER_H			=	lexer.h	
+LEXER_H			=	lexer.h
 LEXER_C			=	lexer.c \
 					lexer_utils.c \
 					lexer_label_token_type.c \
@@ -44,7 +44,7 @@ LEXER_C			=	lexer.c \
 					lexer_expansion_process_token_utils.c \
 					lexer_heredoc_validation.c \
 					lexer_heredoc_validation_utils.c
-					
+
 BUILTINS_C		= 	builtins.c \
 					builtins_export.c
 
@@ -77,10 +77,7 @@ OBJ_PATHS		=	$(addprefix $(OBJ_FOLDER)/, \
 
 C_FLAGS_DEBUG	=	-g -fsanitize=address,undefined
 C_FLAGS_OBJ		=	-Wall -Wextra -Werror
-C_FLAGS_NAME		=	$(C_FLAGS_OBJ) \
-					-lreadline \
-					-L ~/.brew/opt/readline/lib \
-					-I ~/.brew/opt/readline/include
+C_FLAGS_NAME = $(C_FLAGS_OBJ) -lreadline -lncurses -L /usr/lib -I /usr/include/readline
 
 .PHONY: all
 all: $(NAME)
@@ -88,7 +85,7 @@ all: $(NAME)
 $(NAME): $(FOLDER_LIST) $(OBJ_PATHS) Makefile \
 	$(LIBFT_FOLDER)/$(LIBFT)
 	@pkill minishell || true
-	$(COMPILER) $(C_FLAGS_NAME) $(OBJ_PATHS) $(LIBFT_FOLDER)/$(LIBFT) -o $@
+	$(COMPILER)  $(OBJ_PATHS) $(LIBFT_FOLDER)/$(LIBFT) -o $@ $(C_FLAGS_NAME)
 
 $(OBJ_PATHS): $(OBJ_FOLDER)/%.o:$(C_FOLDER)/%.c $(H_PATHS) Makefile
 	$(COMPILER) $(C_FLAGS_OBJ) -I $(H_FOLDER) -I $(LIBFT_FOLDER) -c $< -o $@
@@ -119,4 +116,3 @@ debug: all
 .PHONY: debug
 lldb_g: C_FLAGS_OBJ += -g
 lldb_g: all
-
