@@ -30,7 +30,7 @@ Minishell is a simplified version of bash developed as part of the main curricul
 
 Requirements:
 
-1. Currently requires Intel-based MacOS system
+1. Requires Linux OS
 2. Readline installed using brew in ```~/.brew/opt/readline``` directory.
 3. Any C toolchain installed ( clang, gcc, ... ).
 4. GNU Make installed.
