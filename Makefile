@@ -77,7 +77,16 @@ OBJ_PATHS		=	$(addprefix $(OBJ_FOLDER)/, \
 
 C_FLAGS_DEBUG	=	-g -fsanitize=address,undefined
 C_FLAGS_OBJ		=	-Wall -Wextra -Werror
-C_FLAGS_NAME = $(C_FLAGS_OBJ) -lreadline -lncurses -L /usr/lib -I /usr/include/readline
+
+# Detect OS
+OS := $(shell uname)
+ifeq ($(OS), Darwin)  # Set flags based on OS, here we assume MacOS
+$(info Detected OS: $(OS))
+    C_FLAGS_NAME = $(C_FLAGS_OBJ) -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
+else  # Assume Linux
+$(info Detected OS: $(OS))
+	C_FLAGS_NAME = $(C_FLAGS_OBJ) -lreadline -lncurses -L /usr/lib -I /usr/include/readline
+endif
 
 .PHONY: all
 all: $(NAME)
