@@ -1,97 +1,115 @@
 # Minishell
 
-Minishell is a simplified version of bash developed as part of the main curriculum for Hive Helsinki. It provides basic shell functionality, including executing commands, managing environment variables, and handling input/output redirection.
+Minishell is a simplified UNIX shell developed as part of the Hive Helsinki curriculum.  
+It is a **from-scratch implementation** of core shell features like command execution,  
+process handling, input/output redirection, pipes, and signal handling.
 
-## Collaborators
+## **📌 What This Project Demonstrates**
+This project is an **exercise in system programming in C**.  
+It showcases key **low-level programming concepts**, including:
 
-- [Markus Laaksonen](https://github.com/mxafi)
-- [Lionel ](https://github.com/liocle)
+- **System calls**: `fork()`, `execve()`, `pipe()`, `dup2()`, `waitpid()`, etc.
+- **Process control**: Managing child processes, job control.
+- **Memory management**: Avoiding leaks, handling dynamic allocations.
+- **File descriptors & redirections**: Implementing `<`, `>`, `<<`, `>>`.
+- **Signal handling**: Handling `SIGINT (Ctrl+C)`, `SIGQUIT (Ctrl+\)`.
+- **Environment management**: Handling `$PATH`, variable expansion.
 
-## Table of Contents
+---
 
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Supported Commands](#supported-commands)
-- [Contributing](#contributing)
+## **👥 Collaborators**
+- [Markus Laaksonen](https://github.com/mxafi)  
+- [Lionel](https://github.com/liocle)  
 
-## Features
+---
 
-- Execute commands and display the output.
-- Handle basic shell built-in commands.
-- Handle environment variable expansion.
-- Support input/output redirection (<, >, <<, >>).
-- Implement basic signal handling (Ctrl-\\, Ctrl-C).
-- Implement EOF handling (Ctrl-D).
-- Basic error handling and error messages.
-- Support for handling multiple commands using pipes.
+## **🚀 Features**
+✅ **Execute commands** like Bash  
+✅ **Built-in commands**: `cd`, `echo`, `pwd`, `export`, `unset`, `env`, `exit`  
+✅ **Pipes (`|`)**: Chain multiple commands  
+✅ **Input/output redirection**: `<`, `>`, `<<`, `>>`  
+✅ **Signal handling**: Handle `Ctrl-C`, `Ctrl-D`, `Ctrl-\`  
+✅ **Environment variables**: `$PATH`, `$HOME`, `$?`, etc.  
+✅ **Command history** (via `readline`)  
 
-## Requirements
+---
 
-Requirements:
+## **⚠️ Compatibility**
+✅ **Currently supports:** **Linux**  
+❌ **MacOS support is currently broken** due to Readline differences.  
 
-1. Requires Linux OS
-2. Readline installed using brew in ```~/.brew/opt/readline``` directory.
-3. Any C toolchain installed ( clang, gcc, ... ).
-4. GNU Make installed.
+---
 
-## Installation
-
-To use Minishell, follow these steps:
-
-1. Clone the repository:
-
-```git clone https://github.com/mxafi/minishell.git```
-
-2. Change to the project directory:
-
-```cd minishell```
-
-3. Compile the source code using `make`:
-
-```make```
-
-4. Run the Minishell executable:
-
-```./minishell```
-
-## Usage
-
-Minishell provides a command-line interface where you can enter commands and execute them. It supports various features and built-in commands similar to bash.
-
-Here are some examples of how to use Minishell:
-
-```shell
-$ ls -l              # Execute the "ls" command with the "-l" option
-$ echo Hello World   # Print "Hello World" to the console
-$ cd /path/to/dir    # Change directory to "/path/to/dir"
-$ export VAR=123     # Set the environment variable "VAR" to "123"
+## **🛠 Installation**
+1. **Clone the repository**:
+   
+```sh
+   $ git clone https://github.com/liocle/minishell.git
+   $ cd minishell
 ```
 
-For more details on supported commands and features, please refer to the [Supported Commands](#supported-commands) section.
+2. **Install dependencies**:
+   
+```sh
+   $ sudo apt update && sudo apt install libreadline-dev libncurses-dev
+```
 
-## Supported Commands
+3. **Compile the project**:
+   
+```sh
+   $ make
+```
 
-Minishell supports the following built-in commands:
+4. **Run Minishell**:
+   
+```sh
+   $ ./minishell
+```
 
-- cd with only a relative or absolute path
-- echo with option -n
-- pwd with no options
-- export with no options
-- unset with no options
-- env with no options or arguments
-- exit with no options
+## **📌 Usage Examples**
+sh
+$ ls -l              # List files
+$ echo Hello World   # Print "Hello World"
+$ export PAGER=less  # Set an environment variable
+$ cd /home/user      # Change directory
+$ cat file | grep foo > output.txt  # Use pipes and redirections
 
-Additionally, Minishell can execute external commands by searching for them in the directories listed in the `PATH` environment variable.
+## **💡 What I Learned**
+This project deepened my understanding of C and UNIX internals, including:
 
-## Contributing
+- Process creation & management (fork(), execve(), waitpid())
+- File descriptors (open(), close(), dup2())
+- Signal handling (SIGINT, SIGQUIT, signal(), sigaction())
+- Memory management (malloc(), free(), detecting leaks)
+- Inter-process communication (pipe())
+- I now have hands-on experience writing system-level C code and working with complex debugging scenarios.
 
-Contributions are welcome! If you would like to contribute to Minishell, please follow these steps:
+## **💡 Real-World Applications**
+
+✅ **Real-world C experience** → This project mimics real shell behavior, reinforcing key system programming skills.  
+✅ **System calls knowledge** → I now understand how UNIX shells execute commands, handle pipes, and manage processes.   
+✅ **Debugging skills** → Learned to debug memory leaks, segmentation faults.  
+✅ **Handling edge cases** → Unclosed quotes, invalid input, redirections, `$?` expansion, etc.
+
+
+## **🛠 Implemented Built-in Commands**
+- `cd`
+- `echo -n`
+- `pwd`
+- `export`
+- `unset`
+- `env`
+- `exit` 
+
+Minishell also executes any external command found in `$PATH`.
+
+## **🤝 Contributing**
+Want to improve Minishell? Follow these steps:
 
 1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make the necessary changes and commit them.
-4. Push your changes to your forked repository.
-5. Submit a pull request to the main repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Submit a pull request.
 
-Please ensure that your code follows the project's coding style and conventions.
+## **📜 License**
+This project was built as part of the Hive Helsinki curriculum and is intended for educational purposes.
