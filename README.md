@@ -67,12 +67,13 @@ It showcases key **low-level programming concepts**, including:
 ```
 
 ## **📌 Usage Examples**
-sh
-$ ls -l              # List files
+```sh
+$ ls -l              # List files 
 $ echo Hello World   # Print "Hello World"
 $ export PAGER=less  # Set an environment variable
 $ cd /home/user      # Change directory
 $ cat file | grep foo > output.txt  # Use pipes and redirections
+```
 
 ## **💡 What I Learned**
 This project deepened my understanding of C and UNIX internals, including:
